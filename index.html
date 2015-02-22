@@ -3,14 +3,71 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Nim Niminy, Nim Niminy, Nim Nim Naroo</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <script src="./Nim.js"></script>
+    <script src="./Ui.js"></script>
+    <script src="./Round.js"></script>
+    <script src="./Player.js"></script>
 </head>
 <body>
 
-    <header>
-        <h1>
-            Nim Niminy, Nim Niminy, Nim Nim Naroo
-        </h1>
-    </header>
+<header>
+    <h1>
+        Nim Niminy, Nim Niminy, Nim Nim Naroo
+    </h1>
+</header>
+
+<div id="main_ui">
+    <div id="one_player">1 Player</div>
+    <div id="two_player">2 Players</div>
+    <div id="help">Help</div>
+</div>
+
+<div id="round_ui">
+    <div id="sticks">
+        21
+    </div>
+
+    <div id="player_ui">
+        <div id="player_message">
+
+        </div>
+
+        <div id="player_options">
+            <div id="one_stick">
+                1 Stick
+            </div>
+            <div id="two_stick">
+                2 Stick
+            </div>
+            <div id="three_stick">
+                3 Stick
+            </div>
+        </div>
+    </div>
+
+    <div id="computer_ui">
+        The computer is thinking...
+    </div>
+
+    <div id="winner_ui">
+        <div id="winner_message">
+
+        </div>
+
+        <div id="main">
+            Main Menu
+        </div>
+
+        <div id="reset">
+            Play Again?
+        </div>
+    </div>
+</div>
 
 </body>
+<script>
+    var nim = new Nim();
+    nim.start();
+</script>
 </html>
