@@ -83,10 +83,8 @@ function Ui() {
         stick
             .exit()
             .transition()
-            //.style("height", "0rem")
             .duration(500)
             .style("background", "white")
-            //.style("background", "orange")
             .remove();
     };
 
