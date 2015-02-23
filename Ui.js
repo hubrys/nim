@@ -35,6 +35,9 @@ function Ui() {
     };
 
     this.showPlayerUi = function (currentSticks, name) {
+        this.three_stick.style.display = currentSticks <= 3 ? "none" : "block";
+        this.two_stick.style.display = currentSticks <= 2 ? "none" : "block";
+
         console.log("showing player ui for sticks " + currentSticks);
         this.computerUi.style.display = "none";
         this.playerUi.style.display = "block";

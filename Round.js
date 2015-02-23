@@ -39,7 +39,10 @@ function Round(ui, player1, player2) {
         this.currentSticks = sticks;
         this.ui.setCurrentSticks(this.currentSticks);
 
-        if (this.currentSticks == 1) {
+        if (this.currentSticks <= 0) {
+            this.ui.setCurrentSticks(0);
+            this.ui.showWinnerUi(this.isPlayerOneTurn ? this.player2.name : this.player1.name);
+        } else if (this.currentSticks == 1) {
             this.ui.setCurrentSticks(0);
             this.ui.showWinnerUi(this.isPlayerOneTurn ? this.player1.name : this.player2.name);
         } else {
