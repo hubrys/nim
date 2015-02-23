@@ -12,6 +12,7 @@ function Nim() {
             new Player('Computer', true));
 
         var self = this;
+
         InitializeInputHandlers({
             takeSticks: function (sticks) {
                 self.currentRound.takeSticks(sticks);

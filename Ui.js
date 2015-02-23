@@ -17,16 +17,21 @@ function Ui() {
     this.winnerUi = document.getElementById("winner_ui");
     this.winnerMessage = document.getElementById("winner_message");
 
-    document.getElementById("reset")
+    this.stickySticks = [];
+    for (var i = 1; i <= 21; i++) {
+        this.stickySticks.push(i);
+    }
 
-    this.showMainUi = function() {
-        this.mainUi.style.display = "block";
+    this.showMainUi = function () {
+        this.mainUi.style.display = "flex";
         this.roundUi.style.display = "none";
+        this.hideWinnerUi();
     };
 
-    this.showRoundUi = function() {
+    this.showRoundUi = function () {
         this.mainUi.style.display = "none";
-        this.roundUi.style.display = "block";
+        this.roundUi.style.display = "flex";
+        this.hideWinnerUi();
     };
 
     this.showPlayerUi = function (currentSticks, name) {
@@ -44,15 +49,52 @@ function Ui() {
     };
 
     this.setCurrentSticks = function (sticks) {
-        this.sticks.innerHTML = sticks;
+        var diff = this.stickySticks.length - sticks;
+        if (diff < 0) {
+            diff = -diff;
+            var length = this.stickySticks.length;
+            for (var i = 0; i < diff; i++) {
+                this.stickySticks.push(length + i + 1);
+            }
+        } else {
+            this.stickySticks.splice(sticks, 100);
+        }
+        console.log("currentSticks: %d, length: %d", sticks, this.stickySticks.length);
+
+        var stick = d3.select("#sticks")
+            .selectAll("div")
+            .data(this.stickySticks);
+
+        stick
+            .enter()
+            .append("div")
+            //.style("height", "0rem")
+            .style("transform", "scale(1, 0")
+            .text(function (d) {
+                return d;
+            })
+            .transition()
+            .duration(500)
+            .delay(function (d, i) {
+                return i * 20;
+            })
+            .style("transform", "scale(1, 1)");
+
+        stick
+            .exit()
+            .transition()
+            //.style("height", "0rem")
+            .duration(500)
+            .style("background", "white")
+            //.style("background", "orange")
+            .remove();
     };
 
     this.showWinnerUi = function (name) {
         console.log(name + ' is the winner');
         this.winnerMessage.innerHTML = name + " is the winner";
-        this.playerUi.style.display = "none";
-        this.computerUi.style.display = "none";
-        this.winnerUi.style.display = "block";
+        this.roundUi.style.display = "none";
+        this.winnerUi.style.display = "flex";
     };
 
     this.hideWinnerUi = function () {
@@ -74,7 +116,7 @@ function InitializeInputHandlers(cb) {
         cb.takeSticks(3);
     };
 
-    document.getElementById("main").onclick = function() {
+    document.getElementById("main").onclick = function () {
         cb.main();
     };
 
@@ -82,11 +124,11 @@ function InitializeInputHandlers(cb) {
         cb.reset();
     };
 
-    document.getElementById("one_player").onclick = function() {
+    document.getElementById("one_player").onclick = function () {
         cb.players(1);
     };
 
-    document.getElementById("two_player").onclick = function() {
+    document.getElementById("two_player").onclick = function () {
         cb.players(2);
     };
 

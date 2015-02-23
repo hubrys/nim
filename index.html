@@ -3,8 +3,9 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Nim Niminy, Nim Niminy, Nim Nim Naroo</title>
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
-    <script src="./Nim.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="./nim.js"></script>
     <script src="./Ui.js"></script>
     <script src="./Round.js"></script>
     <script src="./Player.js"></script>
@@ -13,55 +14,55 @@
 
 <header>
     <h1>
-        Nim Niminy, Nim Niminy, Nim Nim Naroo
+        The Secret of Nim
     </h1>
 </header>
 
-<div id="main_ui">
-    <div id="one_player">1 Player</div>
-    <div id="two_player">2 Players</div>
-    <div id="help">Help</div>
+<div id="main_ui" class="ui_container">
+    <div id="one_player" class="btn">1 Player</div>
+    <div id="two_player" class="btn">2 Players</div>
+    <div id="help" class="btn">Help</div>
 </div>
 
-<div id="round_ui">
-    <div id="sticks">
-        21
+<div id="round_ui" class="ui_container">
+    <div id="sticks" class="sticks">
+
     </div>
 
-    <div id="player_ui">
+    <div id="player_ui" class="player_ui">
         <div id="player_message">
 
         </div>
 
         <div id="player_options">
-            <div id="one_stick">
+            <div id="one_stick" class="stick-btn">
                 1 Stick
             </div>
-            <div id="two_stick">
-                2 Stick
+            <div id="two_stick" class="stick-btn">
+                2 Sticks
             </div>
-            <div id="three_stick">
-                3 Stick
+            <div id="three_stick" class="stick-btn">
+                3 Sticks
             </div>
         </div>
     </div>
 
-    <div id="computer_ui">
+    <div id="computer_ui" class="player_ui">
         The computer is thinking...
     </div>
+</div>
 
-    <div id="winner_ui">
-        <div id="winner_message">
+<div id="winner_ui" class="ui_container">
+    <div id="winner_message">
 
-        </div>
+    </div>
 
-        <div id="main">
-            Main Menu
-        </div>
+    <div id="reset" class="btn">
+        Play Again?
+    </div>
 
-        <div id="reset">
-            Play Again?
-        </div>
+    <div id="main" class="btn">
+        Main Menu
     </div>
 </div>
 
